@@ -16,3 +16,6 @@ git reset --soft "começo do hash que gerou o commit" (alterar o arquivo para a 
 git clone "link do repositorio" (clona para minha maquina local o repositorio)
 git config --local -e (serve para editar as configurações do repositorio, para o repositorio remoto)
 git config --global -e (serve para editar as configurações do meu git global, para o meu git no geral)
+
+git push (envia o commit para o meu repositorio remoto)
+git pull (puxa arquivos que estão no meu repositorio remoto)
