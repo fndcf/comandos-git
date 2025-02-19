@@ -1,0 +1,18 @@
+Meu Primeiro Projeto
+
+git init (inicia um projeto git)
+git status (verifica se tem alguma alteração nos meus arquivos)
+git add "o arquivo que você alterou" (para incluir o que você alterou na hora de stage)
+git commit -m "Comentario sobre o que esta sendo alterado" (para commitar os arquivos alterados que foram adicionados ao stage)
+git log (olhar os logs da alteração)
+
+git restore "nome do arquivo" (comando para restaurar a ultima versão do arquivo commitado)
+git restore --staged "nome do arquivo" (comando para restaurar o arquivo e tira-lo do stage, quando dou um git add sem querer, isso pode ser interessante para quando dou um git add em todos meus arquivos porém só quero commitar 9 e tenho 10, uso esse comando e tiro o qual eu não quero)
+
+git reset --hard "começo do hash que gerou o commit" (alterar o arquivo para a versão que estava no hash commitado)
+- IMPORTANTE: se dermos um git log não vai aparecer os commits que foram feitos após esse hash, porém podemos dar o mesmo comando com o hash de outro commit para voltar nele, então não perdemos os commits"
+git reset --soft "começo do hash que gerou o commit" (alterar o arquivo para a versão que estava no hash commitado, para a area de stage com as linhas que foram alteradas, para caso eu queira apenas mudar alguma coisa dentro do arquivo e não ele inteiro)
+
+git clone "link do repositorio" (clona para minha maquina local o repositorio)
+git config --local -e (serve para editar as configurações do repositorio, para o repositorio remoto)
+git config --global -e (serve para editar as configurações do meu git global, para o meu git no geral)
