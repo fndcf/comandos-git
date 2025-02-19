@@ -2,7 +2,7 @@ Meu Primeiro Projeto
 
 git init (inicia um projeto git)
 git status (verifica se tem alguma alteração nos meus arquivos)
-git add "o arquivo que você alterou" (para incluir o que você alterou na hora de stage)
+git add "o arquivo que você alterou" (para incluir o que você alterou na hora de stage, posso utilizar o "." ao invés do nome do arquivo caso sejam multiplos arquivos e eu quero add todos)
 git commit -m "Comentario sobre o que esta sendo alterado" (para commitar os arquivos alterados que foram adicionados ao stage)
 git log (olhar os logs da alteração)
 
