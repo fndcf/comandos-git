@@ -19,3 +19,8 @@ git config --global -e (serve para editar as configurações do meu git global, 
 
 git push (envia o commit para o meu repositorio remoto)
 git pull (puxa arquivos que estão no meu repositorio remoto)
+
+git merge (faz a fusão das branches que estão no meu repositorio, se forem commits diferentes ele faz normal, se caso tenha alteração em arquivos iguais, pode dar conflito)
+git branch -d "nome da branch" (deleta a branch que eu estava trabalhando, depois de coloca-lá na main, porém todo historico continua lá dessa branch)
+git checkout -b "nome da branch" (cria uma branch nova)
+git branch (ve quais branchs o repositorio tem e em qual eu estou no momento)
