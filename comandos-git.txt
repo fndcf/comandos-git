@@ -29,4 +29,5 @@ git checkout - (ele volta para a branch que eu estava anteriormente)
 git branch (ve quais branchs o repositorio tem e em qual eu estou no momento)
 
 
-Só para ajudar na aula
+Só para ajudar na AULA
+E agora josé
