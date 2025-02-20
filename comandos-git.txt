@@ -8,7 +8,8 @@ git log (olhar os logs da alteração)
 git log -3 (quando tenho muitos logs posso colocar o numero de commits que quero ver)
 git log --oneline (mantem o hash e a descrição que foi feita no commit de forma resumida)
 git reflog (mantem o hash e a descrição também, mas com alguma referencia, um pouco diferente do --oneline, mesmo que você de um reset, ele mantem os logs que nos outros logs do git não aparecem)
-git rebase -i HEAD~5
+git rebase -i HEAD~5 (seleciona os ultimos 5 hashs e abre um arquivo com alguns comandos que possam ser utilizados dentro do proprio comando)
+git cherry-pick "hash do commit" (ele junta ao commit que você esta no momento algo que você queria de um commit que você esta passando no comando)
 
 git restore "nome do arquivo" (comando para restaurar a ultima versão do arquivo commitado)
 git restore --staged "nome do arquivo" (comando para restaurar o arquivo e tira-lo do stage, quando dou um git add sem querer, isso pode ser interessante para quando dou um git add em todos meus arquivos porém só quero commitar 9 e tenho 10, uso esse comando e tiro o qual eu não quero)
