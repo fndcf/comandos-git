@@ -4,14 +4,24 @@ git init (inicia um projeto git)
 git status (verifica se tem alguma alteração nos meus arquivos)
 git add "o arquivo que você alterou" (para incluir o que você alterou na hora de stage, posso utilizar o "." ao invés do nome do arquivo caso sejam multiplos arquivos e eu quero add todos)
 git commit -m "Comentario sobre o que esta sendo alterado" (para commitar os arquivos alterados que foram adicionados ao stage)
-git log (olhar os logs da alteração)
-git log -3 (quando tenho muitos logs posso colocar o numero de commits que quero ver)
-git log --oneline (mantem o hash e a descrição que foi feita no commit de forma resumida)
-git reflog (mantem o hash e a descrição também, mas com alguma referencia, um pouco diferente do --oneline, mesmo que você de um reset, ele mantem os logs que nos outros logs do git não aparecem)
 git rebase -i HEAD~5 (seleciona os ultimos 5 hashs e abre um arquivo com alguns comandos que possam ser utilizados dentro do proprio comando)
 git cherry-pick "hash do commit" (ele junta ao commit que você esta no momento algo que você queria de um commit que você esta passando no comando)
 
-git restore "nome do arquivo" (comando para restaurar a ultima versão do arquivo commitado)
+git log (olhar os logs da alteração)
+git log -3 (quando tenho muitos logs posso colocar o numero de commits que quero ver)
+git log --oneline (mantem o hash e a descrição que foi feita no commit de forma resumida)
+git log --oneline --graph(mantem o hash e a descrição que foi feita no commit de forma resumida, além de fazer um grafico com a evolução correta dos commits)
+git log --online --graph --all (caso eu tenha criado uma branch orfã ela não tras os logs da branch main, porém se quero essas informações posso utilizar esse comando para ver também os commits de todas as branchs)
+git log --online --graph --all --pretty(mostra as informações de uma forma mais organizada)
+git log --graph --all --pretty=format:"%h <%an>:
+>%s" (esse comando apresenta as informações conforme o formato que passei, no caso em questão irá apresentar as seguintes informação na primeira linha o hash do commit e o author do commit e na linha de baixo irá apresentar a mensagem do commit)
+git log --oneline --graph --all "nome do arquivo que foi alterado" (esse comando mostra todos os commits que tem relação com o parametro passado que foi no caso o nome do arquivo que foi alterado)
+git log --online --graph --all --grep="" palavra que quero buscar no historico de commits""(mostra as informações do commit que tem a palavra que estou buscando no parametro --grep=, esse comando tem case sensitive)
+git log --online --graph --all --grep="" palavra que quero buscar no historico de commits"" -i (com o "-i" ele ignora o case sensitive do comando acima citado)
+git log --online --graph --all --author=""nome do author que realizou o commit""(mostra as informações do commit que foram feitos pelo author que esta no parametro --author=)
+git reflog (mantem o hash e a descrição também, mas com alguma referencia, um pouco diferente do --oneline, mesmo que você de um reset, ele mantem os logs que nos outros logs do git não aparecem)
+
+git restore "nome do arquivo" (comando para restaurar a ultima versão do arquivo commitado, podendo utiliza-lo quando o arquivo foi deletado)
 git restore --staged "nome do arquivo" (comando para restaurar o arquivo e tira-lo do stage, quando dou um git add sem querer, isso pode ser interessante para quando dou um git add em todos meus arquivos porém só quero commitar 9 e tenho 10, uso esse comando e tiro o qual eu não quero)
 
 git reset --hard "começo do hash que gerou o commit" (alterar o arquivo para a versão que estava no hash commitado)
@@ -21,6 +31,11 @@ git reset --soft "começo do hash que gerou o commit" (alterar o arquivo para a 
 git clone "link do repositorio" (clona para minha maquina local o repositorio)
 git config --local -e (serve para editar as configurações do repositorio, para o repositorio remoto)
 git config --global -e (serve para editar as configurações do meu git global, para o meu git no geral)
+git config --global merge.tool "nome da ferramenta de merge" (comando utilizado para configurar qual ferramenta de merge iremos utilizar, no caso do treinamento foi o meld)
+
+git mergetool (chama a ferramenta que eu salvei para utilizar nos merges)
+
+git commit (usar esse comando após ajustar algum merge que esta em conflito, depois que resolve-lo, use esse comando para mudar as informações do merge para que fique mais claro o que esta fazendo no nosso merge conflitado)
 
 git push (envia o commit para o meu repositorio remoto)
 git pull (puxa arquivos que estão no meu repositorio remoto)
@@ -40,3 +55,33 @@ git stash apply stash@{"posição do item que eu quero"} (jogar o arquivo seleci
 git stash drop stash@{"posição do item que eu quero"} (parar deletar o arquivo selecionado do diretorio temporario)
 git stash save "descrição do que eu desejo" (salva um arquivo que esta no stage em um outro diretorio temporario com uma descrição)
 git stash save -u (ou --include-untracked) "descrição do que eu desejo" (salva um arquivo que não necessariamente esta no stage em um outro diretorio temporario com uma descrição)
+
+git revert "hash do commit" (reverte o que estava feito no hash do commit passado, excluindo a alteração que foi feita nele, criando outro)
+
+git clean -f (deleta somente os arquivos que foram adicionados ao commit)
+git clean -n (ou --dry-run) (esse comando diz o que vai remover caso você execute o git clean o "-n")
+git clean -i (esse comando roda o clean de forma iterativa para eu escolher o que desejo fazer com eles, existe algumas configurações dentro dele)
+git config --global clean.requireForce false (o comando git clean por padrão pede sempre que passe um argumento que seriam os "-f", "-n" e "-i", caso eu não queira isso posso configurar alterando esse campo, com isso posso executar o "git clean" que irá fazer a mesma coisa que o "git clean -f")
+
+git checkout -b "nome da branch" "hash do commit que estava na branch que eu deletei e quero de volta" (esse comando restaura a branch que eu deletei a partir do ultimo hash de commit dela ou a partir de algum commit que eu passe o hash utilizado) 
+
+git checkout --orphan "nome da branch" (esse comando cria uma branch do zero, sem herdar nada da main, inclusive se der um "git branch" sem ter commitado nada nessa nova branch ela não aparece, só vai aparecer no "git branch" após fazer algum commit nela)
+
+git tag "versão da tag" (cria uma tag para visualizar melhor as informações do ultimo commit feito)
+git tag "versão da tag" "hash do commit" (quando tenho diversos commits e quero adicionar tag neles, só rodar esse comando)
+git tag (quando tem alguma tag criada mostra quais tags existem)
+git tag -d "versão da tag" (deleta a versão da tag que eu passei como parametro)
+git tag -a "versão da tag" -m "mensagem para a tag" (adicionar uma mensagem para a tag que foi criada)
+git tag -n (quando tem alguma tag criada mostra quais tags existem e se elas tem alguma mensagem adicionada)
+git show "versão da tag" (mostra as informações dos commits ou do commit caso seja um só e outros parametros)
+git show "versão da tag" --stat (mostra as informações dos commits quantos e quais arquivos foram inseridos, deletados e alterados)
+git show (posso utiliza-lo sem passar a "versão da tag", assim como também posso utiliza-lo com o "--stat")
+git show "hash do commit" (posso utilizar o hash do commit para ter as informações conforme comandos acima, com o "--stat" também)
+
+
+
+
+
+
+
+
